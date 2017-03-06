@@ -30,4 +30,12 @@ public class PlayerController : MonoBehaviour {
             rb.AddForce(Vector3.up * ForcaDoPulo, ForceMode.Impulse);
         }
     }
+
+    void OnCollisionEnter(Collision outro) {
+        if (outro.gameObject.tag == "obstaculo") {
+            rb.AddForce(new Vector3(-50f, 20f, 0f), ForceMode.Impulse);
+            rb.detectCollisions = false;
+            anim.Play("morrendo");
+        }
+    }
 }
